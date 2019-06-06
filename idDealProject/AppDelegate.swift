@@ -11,6 +11,11 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
+    var globalSelectedRowIndex : String?
+    
+    
+    
     var window: UIWindow?
 
 
