@@ -26,6 +26,14 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
         return cellX
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        self.performSegue(withIdentifier: "goToImageVC", sender: self)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.globalSelectedItemIndex = photoData[indexPath.item]
+    }
+    
     
     @IBOutlet weak var collectionViewX1: UICollectionView!
     
@@ -45,7 +53,7 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
     override func viewDidLoad() {
         
         
-        labelRowIndex.text = appDelegate.globalSelectedRowIndex
+        //labelRowIndex.text = appDelegate.globalSelectedRowIndex
         
         let ind = Int(appDelegate.globalSelectedRowIndex!)
        
@@ -61,7 +69,7 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
             {
                 print(error!)
             }else{
-                print ("abcd")
+                print ("Started")
                 //                print (response)
                 //                print (error)
                 //                print ("test",data)
@@ -95,7 +103,7 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
                         self.photoData.append(pppp as! String)
                         }
                         
-        print(self.photoData[2])
+        //print(self.photoData[2])
 //                        for pppp in thisArray
 //                        {
 //

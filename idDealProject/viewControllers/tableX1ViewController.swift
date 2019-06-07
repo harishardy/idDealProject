@@ -43,6 +43,8 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.globalSelectedRowIndex = String(indexPath.row)
+        appDelegate.globalLatitude = String(latitudeX[0])
+        appDelegate.globalLongitude = String(longitudeX[0])
     }
     
     
@@ -53,6 +55,8 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
     var name = [String] ()
     var imageURL = [String] ()
     var idDeal = [String] ()
+    var latitudeX = [String] ()
+    var longitudeX = [String] ()
     
    
     
@@ -69,7 +73,7 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
             {
                 print(error!)
             }else{
-                print ("abcd")
+                print ("Started")
                 //                print (response)
                 //                print (error)
                 //                print ("test",data)
@@ -90,6 +94,8 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
                                 self.name.append(path["title"] as! String)
                                 self.imageURL.append(path["cat_icon"] as! String)
                                 self.idDeal.append(path["id_deal"] as! String)
+                                self.latitudeX.append(path["latitude"] as! String)
+                                self.longitudeX.append(path["longitude"] as! String)
                             }
                             
                             //                            if let imagePath = ssss as?[String: Any]
