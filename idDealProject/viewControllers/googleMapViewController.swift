@@ -14,15 +14,20 @@ class googleMapViewController: UIViewController {
 
     override func viewDidLoad() {
         
-        let camera = GMSCameraPosition.camera(withLatitude: 13.003387, longitude:     80.255043, zoom: 6.0)
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let lat = Double(appDelegate.globalLatitude!)
+        let long = Double(appDelegate.globalLongitude!)
+        
+        let camera = GMSCameraPosition.camera(withLatitude: lat!, longitude:    long!, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         view = mapView
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: 13.003387, longitude:     80.255043)
-        marker.title = "Adayar"
-        marker.snippet = "CHENNAI"
+        marker.position = CLLocationCoordinate2D(latitude: lat!, longitude:     long!)
+//        marker.title = "Adayar"
+//        marker.snippet = "CHENNAI"
         marker.map = mapView
         
         

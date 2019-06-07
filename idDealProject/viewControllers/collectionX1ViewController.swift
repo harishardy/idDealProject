@@ -37,7 +37,16 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
     
     @IBOutlet weak var collectionViewX1: UICollectionView!
     
-    @IBOutlet weak var labelRowIndex: UILabel!
+        
+    
+    
+    @IBAction func locationButton(_ sender: Any) {
+        
+        performSegue(withIdentifier: "goToMapVC", sender: self)
+    }
+    
+    
+    
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
