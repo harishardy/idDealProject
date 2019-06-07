@@ -11,7 +11,7 @@ import UIKit
 class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource
 {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoURL.count
+        return photoData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -19,7 +19,7 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
         let cellX = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIdX2", for: indexPath) as! collectionX1CollectionViewCell
 
         
-        let urlX = URL(string: photoURL [indexPath.row])
+        let urlX = URL(string: photoData [indexPath.item])
         let dataX = try?Data(contentsOf: urlX!)
         cellX.imageViewX2.image = UIImage(data: dataX!)
         
@@ -37,7 +37,8 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
     
     var link = "https://www.myprivatedeal.com/API/getDeals.php?key=jcjn79b8f043f4y74yh48ug984u"
     
-    var photoURL = [String] ()
+    var photoURL = [NSArray] ()
+    var photoData = [String] ()
     
     
     
@@ -72,24 +73,42 @@ class collectionX1ViewController: UIViewController, UICollectionViewDelegate, UI
 
 
 
-                        var myarray = json["Deal"] as! NSArray
-
-                        //var photosArray = myarray[selectedRowIndex]
-
-                        var currentArray = myarray[ind!] as! NSArray
-
-                        var photosArray = currentArray{photo} as! NSArray
-
-                        for ssss in photosArray
+                        let myArray = json["Deal"] as! NSArray
+                        for ssss in myArray
                         {
                             if let path = ssss as?[String: Any]
                             {
-
-                                self.photoURL.append(path["photos"] as! String)
-
+                                
+                                
+                                self.photoURL.append(path["photo"] as! NSArray)
+                                
                             }
-
+                            
                         }
+                        
+        print(self.photoURL[ind!])
+                        
+                        
+                        
+                        for pppp in self.photoURL[ind!]
+                        {
+                        self.photoData.append(pppp as! String)
+                        }
+                        
+        print(self.photoData[2])
+//                        for pppp in thisArray
+//                        {
+//
+//                            if let pathX = pppp as?[String: Any]
+//                            {
+//
+//                                self.photoURL.append(pathX["thisArray"] as! NSArray)
+//
+//                            }
+//                        }
+                        
+                        
+                            
                         DispatchQueue.main.async {
                             self.collectionViewX1.reloadData()
                         }
