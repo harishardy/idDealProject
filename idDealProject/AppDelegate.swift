@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var globalSelectedItemIndex : String?
     var globalLatitude : String?
     var globalLongitude : String?
+    var globalStoreTitle : String?
     
     
     var window: UIWindow?

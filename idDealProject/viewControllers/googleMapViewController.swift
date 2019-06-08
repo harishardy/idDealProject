@@ -25,9 +25,9 @@ class googleMapViewController: UIViewController {
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: lat!, longitude:     long!)
-//        marker.title = "Adayar"
-//        marker.snippet = "CHENNAI"
+        marker.position = CLLocationCoordinate2D(latitude: lat!, longitude:  long!)
+        marker.title = appDelegate.globalStoreTitle
+        marker.snippet = appDelegate.globalStoreTitle
         marker.map = mapView
         
         

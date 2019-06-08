@@ -43,8 +43,9 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.globalSelectedRowIndex = String(indexPath.row)
-        appDelegate.globalLatitude = String(latitudeX[0])
-        appDelegate.globalLongitude = String(longitudeX[0])
+        appDelegate.globalLatitude = String(latitudeX[indexPath.row])
+        appDelegate.globalLongitude = String(longitudeX[indexPath.row])
+        appDelegate.globalStoreTitle = String(storeTitleX[indexPath.row])
     }
     
     
@@ -57,6 +58,7 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
     var idDeal = [String] ()
     var latitudeX = [String] ()
     var longitudeX = [String] ()
+    var storeTitleX = [String] ()
     
    
     
@@ -64,6 +66,9 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     override func viewDidLoad() {
+        
+        
+    
         
         
         let url = URL(string: link)
@@ -96,6 +101,7 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
                                 self.idDeal.append(path["id_deal"] as! String)
                                 self.latitudeX.append(path["latitude"] as! String)
                                 self.longitudeX.append(path["longitude"] as! String)
+                                self.storeTitleX.append(path["store_title"] as! String)
                             }
                             
                             //                            if let imagePath = ssss as?[String: Any]
@@ -105,6 +111,15 @@ class tableX1ViewController: UIViewController, UITableViewDataSource, UITableVie
                             //                            }
                             
                         }
+                        
+                        
+                        
+//                        print(self.storeTitleX[0])
+//                        print(self.latitudeX[0])
+//                        print(self.longitudeX[0])
+                        
+                        
+                        
                         DispatchQueue.main.async {
                             self.tableViewX1.reloadData()
                         }
